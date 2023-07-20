@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
             elevation: 0.0,
             iconTheme: IconThemeData(color: Colors.black)),
-       // textTheme: Theme.of(context).textTheme, //not working
+        // textTheme: Theme.of(context).textTheme, //not working
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: MyRoutes.homeRoute,

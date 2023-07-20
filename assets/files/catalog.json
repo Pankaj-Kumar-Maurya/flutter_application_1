@@ -1,0 +1,52 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"name": "iPhone 12 Pro",
+			"desc": "Use A13 Bionic chip set in all series",
+			"price": 200,
+			"color": "black",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		},
+		{
+			"id": 2,
+			"name": "iPhone 13 ",
+			"desc": "Use A14 Bionic chip set in all series, all 13 series contain",
+			"price": 368,
+			"color": "red",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		},
+		{
+			"id": 3,
+			"name": "iPhone 14 ",
+			"desc": "Use A15 Bionic chip set in all series, the letest and powerful",
+			"price": 1999,
+			"color": "Yellow",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		},
+		{
+			"id": 4,
+			"name": "iPhone 14 pro ",
+			"desc": "Use A15 Bionic chip set in all series, the letest and powerful",
+			"price": 1299,
+			"color": "Yellow",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		},
+		{
+			"id": 5,
+			"name": "iPhone 14 pro max",
+			"desc": "Use A15 Bionic chip set in all series, the letest and powerful",
+			"price": 1499,
+			"color": "Yellow",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		},
+		{
+			"id": 6,
+			"name": "iPhone 15 (Upcoming..)",
+			"desc": "Use A16 Bionic chip set in all series, the letest and powerful",
+			"price": 2399,
+			"color": "Yellow",
+			"image": "https://m.media-amazon.com/images/I/71fVoqRC0wL._SX679_.jpg"
+		}
+	]
+}
