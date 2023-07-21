@@ -135,7 +135,7 @@ class CatalogImage extends StatelessWidget {
       image,
     )
         .box
-        .shadowSm
+        .shadow2xl
         .rounded
         .p8
         .color(Colors.blue.shade100)
