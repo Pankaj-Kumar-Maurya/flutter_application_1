@@ -27,8 +27,8 @@ class HomeDetailPage extends StatelessWidget {
                   const StadiumBorder(),
                 ),
               ),
-              child: "Buy".text.xl2.make(),
-            ).wh(100, 50)
+              child: "Add To Cart".text.xl.make(),
+            ).wh(130, 50)
           ],
         ).p32(),
       ),
@@ -55,6 +55,12 @@ class HomeDetailPage extends StatelessWidget {
                           .textStyle(context.captionStyle)
                           .make(),
                       10.heightBox,
+                      // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy aliquet, aenean commodo ligula eget dolor."
+                      //     .text
+                      //     .textStyle(context.captionStyle)
+                      //     .make()
+                      //     .p16(),
+                      ////Bottom Overflowed Pixel Error
                     ],
                   ).py64(),
                 ),
