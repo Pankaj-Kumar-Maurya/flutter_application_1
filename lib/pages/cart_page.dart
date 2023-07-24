@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Placeholder().p32().expand(),
+          _CartList().p32().expand(),
           Divider(),
           _CartTotal(),
         ],
@@ -28,15 +29,22 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl4.color(Colors.red).make(),
+          "\$${_cart.totalPrice}".text.xl4.color(Colors.red).make(),
           30.widthBox,
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: "This Feature Avaliable in Future".text.make(),
+                ),
+              );
+            },
             child: "Buy".text.bold.xl.make(),
           ).w24(context)
         ],
@@ -53,17 +61,24 @@ class _CartList extends StatefulWidget {
 }
 
 class __CartListState extends State<_CartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.remove_circle_outline),
-        ),
-      ),
-    );
+    return _cart.items.isEmpty
+        ? "Nothing To Show".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: const Icon(Icons.done),
+              trailing: IconButton(
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  setState(() {});
+                },
+                icon: const Icon(Icons.remove_circle_outline),
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }
