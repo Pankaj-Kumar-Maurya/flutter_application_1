@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../core/store.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -16,8 +18,8 @@ class CartPage extends StatelessWidget {
       body: Column(
         children: [
           _CartList().p32().expand(),
-          Divider(),
-          _CartTotal(),
+          const Divider(),
+          const _CartTotal(),
         ],
       ),
     );
@@ -29,13 +31,20 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}".text.xl4.color(Colors.red).make(),
+          // Use VxConsumer if need notification
+          VxBuilder(
+            mutations: const {RemoveMutation},
+            builder: (context, _, __) {
+              //now Builder take three Pairameters
+              return "\$${_cart.totalPrice}".text.xl4.color(Colors.red).make();
+            },
+          ),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -53,17 +62,11 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  const _CartList({super.key});
-
-  @override
-  State<_CartList> createState() => __CartListState();
-}
-
-class __CartListState extends State<_CartList> {
-  final _cart = CartModel();
+class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]); //VxState.listen not working
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Nothing To Show".text.xl3.makeCentered()
         : ListView.builder(
@@ -72,8 +75,9 @@ class __CartListState extends State<_CartList> {
               leading: const Icon(Icons.done),
               trailing: IconButton(
                 onPressed: () {
-                  _cart.remove(_cart.items[index]);
-                  setState(() {});
+                  RemoveMutation(_cart.items[index]);
+                  //_cart.remove(_cart.items[index]);
+                  // setState(() {});
                 },
                 icon: const Icon(Icons.remove_circle_outline),
               ),
