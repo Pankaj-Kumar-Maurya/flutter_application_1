@@ -58,7 +58,10 @@ class _LoginPageState extends State<LoginPage> {
 
                         for (int i = 0; i < value!.length; i++) {
                           if (value[i].codeUnitAt(0) <= 'z'.codeUnitAt(0) &&
-                              value[i].codeUnitAt(0) >= 'a'.codeUnitAt(0)) {
+                                  value[i].codeUnitAt(0) >= 'a'.codeUnitAt(0) ||
+                              value[i].codeUnitAt(0) <= 'Z'.codeUnitAt(0) &&
+                                  value[i].codeUnitAt(0) >= 'A'.codeUnitAt(0) ||
+                              value[i].codeUnitAt(0) <= ' '.codeUnitAt(0)) {
                             flag = 0;
                           } else {
                             return "valid char('a' To 'z' only small)";
